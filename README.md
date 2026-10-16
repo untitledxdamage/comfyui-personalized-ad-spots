@@ -8,11 +8,28 @@ One video per person: a short **generated clip in which a character says their n
 > la persona, y sigue con clips prefijados (tu spot, una placa de cierre). Es modular: cada clip es un grupo de
 > nodos que se suma a una cadena, así que añadir otro clip es duplicar un grupo. Corre en local con modelos de
 > pesos abiertos. Un script sobre el Comfy SDK carga la lista de clientes (CSV o Excel), envía los trabajos,
-> descarga los videos en masa y se puede cortar y reanudar. El resto del documento está en inglés.
+> descarga los videos en masa y se puede cortar y reanudar. Es mi intento de una versión abierta de las apps de
+> presentador con lip-sync para anuncios (tipo Higgsfield), para el reto *Open Source Higgsfield*. El resto del
+> documento está en inglés.
 
-Built for the *Open Call: Comfy Dev Platform Challenge*. The paid feature it re-does in the open is
-**personalized video at scale**: services that take a list of names and return one video per name, usually
-billed per video or per minute, with your customer list uploaded to their servers.
+Built for the *Open Source Higgsfield* challenge (#OpenSourceHiggsfield). My attempt at an open version of
+the **talking-presenter ad apps** that platforms like Higgsfield offer (lip-synced characters for UGC-style ads,
+as in Lipsync Studio or UGC Factory), focused on one thing they are used for: **personalized ads at scale**,
+one video per customer, without paying per video and without uploading the customer list to anyone. It uses
+open-weights models only, with no partner nodes or APIs. This project is not affiliated with Higgsfield.
+
+### What I think is new here
+
+- **Generated and pre-made clips in one graph.** A small node pack (`comfyui-spot-sequencer`) adds a
+  *sequence* type: generated clips (frames + audio) and existing video files add themselves to it in any order,
+  and one node writes the result, so the finished ad comes out of the same graph that generates the greeting.
+  Pre-made clips are streamed from disk at save time, so a long spot does not fill the memory.
+- **Modular by duplication.** Every clip is a group of nodes; adding a clip to the ad is copy, paste and connect.
+- **Broadcast-style audio inside the graph.** Each clip is levelled to a loudness target (ITU-R BS.1770) and the
+  whole spot goes through a peak limiter, so a quiet generated greeting and a loud finished spot play at a
+  similar level.
+- **A customer list, not a single video.** A campaign script on the Comfy SDK takes a CSV or Excel list and can
+  be stopped and resumed without submitting anything twice.
 
 ## Who would use it
 
@@ -150,7 +167,7 @@ What I could verify: the full flow on my PC through the local proxy (import from
 flight, a kill in the middle of a run, download from a copy of the campaign folder, re-rendering one person
 with `retry --ids`), and the ledger logic with a simulated backend on a 50,000-row list (import with rejects, 64 jobs in flight,
 stop and resume, retries, sharded downloads, no duplicate submissions). What I could not: a real cloud
-deployment, because my account has no credits.
+deployment.
 
 ## Check the results
 
@@ -205,8 +222,8 @@ instead of submitting it twice. The optional transcription check heard the right
 
 - **About 5 minutes per video on a 16 GB card.** Almost all of it is the 5 s generated clip. A list of 1,000
   names is three and a half days on one GPU; this is for small lists locally, or for more GPUs.
-- **Only tested locally.** My Comfy account has no credits, so I could not deploy it to the Developer Platform
-  or run it on Comfy Cloud. The campaign script uses the same SDK calls either way, but that path is unverified.
+- **Only tested locally.** I have not deployed it to the Developer Platform or run it on Comfy Cloud. The
+  campaign script uses the same SDK calls either way, but that path is unverified.
 - **The name is not checked by the workflow.** LTX-2.5 said the sample names correctly in my tests, but an
   unusual name can come out wrong; `tools/check_output.py --transcribe` helps find those, and
   `campaign.py retry --ids` renders them again with another seed.
