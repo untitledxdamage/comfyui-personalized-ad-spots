@@ -1,0 +1,6 @@
+downloads/
+campaigns/
+__pycache__/
+*.pyc
+*.part
+.venv/

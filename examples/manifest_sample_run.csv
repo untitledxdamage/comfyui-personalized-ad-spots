@@ -1,0 +1,6 @@
+customer_id,name,seed,job_id,status,render_s,wall_s,file,error
+customer_0001,Emma,21796033461224,daffb5a7-3501-4022-957c-c71b27ea17a0,ok,,292,downloads\Loyalty_Offer\customer_0001.mp4,
+customer_0002,Mateo,171415365540645,0867b3df-351f-4dd2-b10f-6eac26a8a699,ok,,296,downloads\Loyalty_Offer\customer_0002.mp4,
+customer_0003,Aiko,227830871090264,b1afe355-4224-4e08-ab2b-44ffb333c0db,ok,,298,downloads\Loyalty_Offer\customer_0003.mp4,
+customer_0004,Priya,272429887199619,6613cbf0-bb1e-4af3-9107-f280cdd4aca7,ok,,305,downloads\Loyalty_Offer\customer_0004.mp4,
+customer_0005,Lucas,273605207435923,a0193101-54a3-460b-ab78-3058344371ad,ok,,285,downloads\Loyalty_Offer\customer_0005.mp4,

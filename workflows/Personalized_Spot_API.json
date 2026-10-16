@@ -1,0 +1,867 @@
+{
+  "1": {
+    "inputs": {
+      "value": "Emma"
+    },
+    "class_type": "PrimitiveString",
+    "_meta": {
+      "title": "NAME · NOMBRE"
+    }
+  },
+  "2": {
+    "inputs": {
+      "value": "customer_0001"
+    },
+    "class_type": "PrimitiveString",
+    "_meta": {
+      "title": "CUSTOMER ID (file name) · ID DEL CLIENTE (nombre del archivo)"
+    }
+  },
+  "3": {
+    "inputs": {
+      "value": "Loyalty_Offer"
+    },
+    "class_type": "PrimitiveString",
+    "_meta": {
+      "title": "CAMPAIGN / BATCH NAME · NOMBRE DE CAMPAÑA / LOTE"
+    }
+  },
+  "10": {
+    "inputs": {
+      "value": "Hi, {name}! We saved something special for you."
+    },
+    "class_type": "PrimitiveString",
+    "_meta": {
+      "title": "GREETING SCRIPT (uses {name}) · GUION DEL SALUDO (usa {name})"
+    }
+  },
+  "11": {
+    "inputs": {
+      "value": "A woman in her fifties speaks in a warm, friendly, slightly husky female voice, calm and cheerful, in clear English. Medium close-up, eye-level shot of this coffee shop owner with grey-streaked hair tied back, round glasses, a cream knitted cardigan and a terracotta apron, standing behind the wooden counter of her small neighborhood café, with an espresso machine and shelves of cups softly out of focus behind her in soft daylight. She smiles and says to the camera, speaking, not singing, as if greeting a regular customer: \"{greeting}\" Her lips and jaw move in precise sync with every word, she gives a small nod on the name and ends with a warm smile. The camera holds the same framing as the first frame, steady, with only a very subtle handheld sway. Audio: only her friendly speaking voice, close and clear, over the faint quiet room tone of the café; no music, no other voices."
+    },
+    "class_type": "PrimitiveStringMultiline",
+    "_meta": {
+      "title": "DIRECTION PROMPT (uses {greeting}) · PROMPT DE DIRECCIÓN (usa {greeting})"
+    }
+  },
+  "12": {
+    "inputs": {
+      "string": [
+        "10",
+        0
+      ],
+      "find": "{name}",
+      "replace": [
+        "1",
+        0
+      ]
+    },
+    "class_type": "StringReplace",
+    "_meta": {
+      "title": "Name → script · Nombre → guion"
+    }
+  },
+  "13": {
+    "inputs": {
+      "string": [
+        "11",
+        0
+      ],
+      "find": "{greeting}",
+      "replace": [
+        "12",
+        0
+      ]
+    },
+    "class_type": "StringReplace",
+    "_meta": {
+      "title": "Script → prompt · Guion → prompt"
+    }
+  },
+  "20": {
+    "inputs": {
+      "image": "host_first_frame.png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "FIRST FRAME · PRIMER FRAME"
+    }
+  },
+  "21": {
+    "inputs": {
+      "aspect_ratio": "16:9 (Widescreen)",
+      "megapixels": 2,
+      "multiple": 32
+    },
+    "class_type": "ResolutionSelector",
+    "_meta": {
+      "title": "Generated clip resolution · Resolución del clip generado"
+    }
+  },
+  "31": {
+    "inputs": {
+      "video": [
+        "30:370",
+        0
+      ]
+    },
+    "class_type": "GetVideoComponents",
+    "_meta": {
+      "title": "Split frames / audio · Separa cuadros / audio"
+    }
+  },
+  "40": {
+    "inputs": {
+      "fps": [
+        "31",
+        2
+      ],
+      "normalize_loudness": true,
+      "target_lufs": -14,
+      "images": [
+        "31",
+        0
+      ],
+      "audio": [
+        "31",
+        1
+      ]
+    },
+    "class_type": "SpotSequencer_AddGeneratedClip",
+    "_meta": {
+      "title": "ADD GENERATED CLIP · AÑADIR CLIP GENERADO"
+    }
+  },
+  "50": {
+    "inputs": {
+      "file": "cafe_spot.mp4"
+    },
+    "class_type": "LoadVideo",
+    "_meta": {
+      "title": "PRE-MADE CLIP 1 · CLIP PREFIJADO 1 (upload a video · sube un video)"
+    }
+  },
+  "51": {
+    "inputs": {
+      "normalize_loudness": false,
+      "target_lufs": -14,
+      "video": [
+        "50",
+        0
+      ],
+      "sequence": [
+        "40",
+        0
+      ]
+    },
+    "class_type": "SpotSequencer_AddPremadeClip",
+    "_meta": {
+      "title": "ADD PRE-MADE CLIP · AÑADIR CLIP PREFIJADO"
+    }
+  },
+  "60": {
+    "inputs": {
+      "file": "cafe_endcard.mp4"
+    },
+    "class_type": "LoadVideo",
+    "_meta": {
+      "title": "PRE-MADE CLIP 2 · CLIP PREFIJADO 2 (upload a video · sube un video)"
+    }
+  },
+  "61": {
+    "inputs": {
+      "normalize_loudness": false,
+      "target_lufs": -14,
+      "video": [
+        "60",
+        0
+      ],
+      "sequence": [
+        "51",
+        0
+      ]
+    },
+    "class_type": "SpotSequencer_AddPremadeClip",
+    "_meta": {
+      "title": "ADD PRE-MADE CLIP · AÑADIR CLIP PREFIJADO"
+    }
+  },
+  "70": {
+    "inputs": {
+      "string_a": "Personalized_Spots",
+      "string_b": [
+        "3",
+        0
+      ],
+      "delimiter": "/"
+    },
+    "class_type": "StringConcatenate",
+    "_meta": {
+      "title": "Batch folder · Carpeta del lote"
+    }
+  },
+  "71": {
+    "inputs": {
+      "string_a": [
+        "70",
+        0
+      ],
+      "string_b": [
+        "2",
+        0
+      ],
+      "delimiter": "/"
+    },
+    "class_type": "StringConcatenate",
+    "_meta": {
+      "title": "File path · Ruta del archivo"
+    }
+  },
+  "80": {
+    "inputs": {
+      "filename_prefix": [
+        "71",
+        0
+      ],
+      "width": 1920,
+      "height": 1080,
+      "fps": 24,
+      "fit": "crop",
+      "ceiling_db": -2,
+      "crf": 19,
+      "sequence": [
+        "61",
+        0
+      ]
+    },
+    "class_type": "SpotSequencer_SaveSequence",
+    "_meta": {
+      "title": "SAVE SEQUENCE → MP4 · GUARDAR SECUENCIA → MP4"
+    }
+  },
+  "30:364": {
+    "inputs": {
+      "text": [
+        "30:376",
+        0
+      ],
+      "clip": [
+        "30:387",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "30:376": {
+    "inputs": {
+      "value": [
+        "13",
+        0
+      ]
+    },
+    "class_type": "PrimitiveStringMultiline",
+    "_meta": {
+      "title": "Prompt"
+    }
+  },
+  "30:384": {
+    "inputs": {
+      "unet_name": "ltx-2.5-22b-distilled-transformer-comfy-int8-convrot.safetensors",
+      "weight_dtype": "default"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "Load Diffusion Model"
+    }
+  },
+  "30:362": {
+    "inputs": {
+      "value": 5
+    },
+    "class_type": "PrimitiveInt",
+    "_meta": {
+      "title": "Duration"
+    }
+  },
+  "30:363": {
+    "inputs": {
+      "value": false
+    },
+    "class_type": "PrimitiveBoolean",
+    "_meta": {
+      "title": "Switch to Text to Video?"
+    }
+  },
+  "30:365": {
+    "inputs": {
+      "frame_rate": [
+        "30:359",
+        0
+      ],
+      "positive": [
+        "30:364",
+        0
+      ],
+      "negative": [
+        "30:373",
+        0
+      ]
+    },
+    "class_type": "LTXVConditioning",
+    "_meta": {
+      "title": "LTXVConditioning"
+    }
+  },
+  "30:385": {
+    "inputs": {
+      "vae_name": "ltx-2.5-video-vae-bf16.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Load VAE"
+    }
+  },
+  "30:386": {
+    "inputs": {
+      "vae_name": "ltx-2.5-audio-vae-bf16.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Load VAE"
+    }
+  },
+  "30:372": {
+    "inputs": {
+      "value": [
+        "21",
+        0
+      ]
+    },
+    "class_type": "PrimitiveInt",
+    "_meta": {
+      "title": "Width"
+    }
+  },
+  "30:373": {
+    "inputs": {
+      "text": "pc game, console game, video game, cartoon, childish, ugly",
+      "clip": [
+        "30:387",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "30:387": {
+    "inputs": {
+      "clip_name": "gemma4-12b-with-proj-ltx-2.5-comfy-int8-convrot.safetensors",
+      "type": "ltxv",
+      "device": "default"
+    },
+    "class_type": "CLIPLoader",
+    "_meta": {
+      "title": "Load CLIP"
+    }
+  },
+  "30:360": {
+    "inputs": {
+      "value": [
+        "21",
+        1
+      ]
+    },
+    "class_type": "PrimitiveInt",
+    "_meta": {
+      "title": "Height"
+    }
+  },
+  "30:352": {
+    "inputs": {
+      "sampler_name": "euler_ancestral"
+    },
+    "class_type": "KSamplerSelect",
+    "_meta": {
+      "title": "KSamplerSelect"
+    }
+  },
+  "30:339": {
+    "inputs": {
+      "noise_seed": 961345480263047
+    },
+    "class_type": "RandomNoise",
+    "_meta": {
+      "title": "RandomNoise"
+    }
+  },
+  "30:397": {
+    "inputs": {
+      "sigmas": "1.0, 0.99375, 0.9875, 0.98125, 0.975, 0.909375, 0.725, 0.421875, 0.0"
+    },
+    "class_type": "ManualSigmas",
+    "_meta": {
+      "title": "ManualSigmas"
+    }
+  },
+  "30:361": {
+    "inputs": {
+      "value": 24
+    },
+    "class_type": "PrimitiveInt",
+    "_meta": {
+      "title": "Frame Rate"
+    }
+  },
+  "30:371": {
+    "inputs": {
+      "model_name": "ltx-2.5-latent-spatial-upscaler-x2-bf16-1.0.safetensors"
+    },
+    "class_type": "LatentUpscaleModelLoader",
+    "_meta": {
+      "title": "Load Latent Upscale Model"
+    }
+  },
+  "30:388": {
+    "inputs": {
+      "video_cfg": 1,
+      "audio_cfg": 1,
+      "model": [
+        "30:384",
+        0
+      ],
+      "positive": [
+        "30:365",
+        0
+      ],
+      "negative": [
+        "30:365",
+        1
+      ]
+    },
+    "class_type": "LTXVDualCFGGuider",
+    "_meta": {
+      "title": "LTXV Dual CFG Guider"
+    }
+  },
+  "30:344": {
+    "inputs": {
+      "noise": [
+        "30:339",
+        0
+      ],
+      "guider": [
+        "30:388",
+        0
+      ],
+      "sampler": [
+        "30:352",
+        0
+      ],
+      "sigmas": [
+        "30:397",
+        0
+      ],
+      "latent_image": [
+        "30:377",
+        0
+      ]
+    },
+    "class_type": "SamplerCustomAdvanced",
+    "_meta": {
+      "title": "SamplerCustomAdvanced"
+    }
+  },
+  "30:357": {
+    "inputs": {
+      "strength": 0.7,
+      "bypass": [
+        "30:363",
+        0
+      ],
+      "vae": [
+        "30:385",
+        0
+      ],
+      "image": [
+        "30:350",
+        0
+      ],
+      "latent": [
+        "30:356",
+        0
+      ]
+    },
+    "class_type": "LTXVImgToVideoInplace",
+    "_meta": {
+      "title": "LTXVImgToVideoInplace"
+    }
+  },
+  "30:366": {
+    "inputs": {
+      "frames_number": [
+        "30:378",
+        1
+      ],
+      "frame_rate": [
+        "30:359",
+        1
+      ],
+      "batch_size": 1,
+      "audio_vae": [
+        "30:386",
+        0
+      ]
+    },
+    "class_type": "LTXVEmptyLatentAudio",
+    "_meta": {
+      "title": "Empty LTXV Latent Audio"
+    }
+  },
+  "30:367": {
+    "inputs": {
+      "av_latent": [
+        "30:344",
+        0
+      ]
+    },
+    "class_type": "LTXVSeparateAVLatent",
+    "_meta": {
+      "title": "Separate AV Latent"
+    }
+  },
+  "30:377": {
+    "inputs": {
+      "video_latent": [
+        "30:357",
+        0
+      ],
+      "audio_latent": [
+        "30:366",
+        0
+      ]
+    },
+    "class_type": "LTXVConcatAVLatent",
+    "_meta": {
+      "title": "Concat AV Latent"
+    }
+  },
+  "30:351": {
+    "inputs": {
+      "resize_type": "scale longer dimension",
+      "resize_type.longer_size": 1536,
+      "scale_method": "lanczos",
+      "input": [
+        "20",
+        0
+      ]
+    },
+    "class_type": "ResizeImageMaskNode",
+    "_meta": {
+      "title": "Resize Image/Mask"
+    }
+  },
+  "30:353": {
+    "inputs": {
+      "expression": "a/2",
+      "values.a": [
+        "30:372",
+        0
+      ]
+    },
+    "class_type": "ComfyMathExpression",
+    "_meta": {
+      "title": "Math Expression"
+    }
+  },
+  "30:355": {
+    "inputs": {
+      "expression": "a/2",
+      "values.a": [
+        "30:360",
+        0
+      ]
+    },
+    "class_type": "ComfyMathExpression",
+    "_meta": {
+      "title": "Math Expression"
+    }
+  },
+  "30:350": {
+    "inputs": {
+      "img_compression": 18,
+      "image": [
+        "30:351",
+        0
+      ]
+    },
+    "class_type": "LTXVPreprocess",
+    "_meta": {
+      "title": "LTXV Preprocess"
+    }
+  },
+  "30:356": {
+    "inputs": {
+      "width": [
+        "30:353",
+        1
+      ],
+      "height": [
+        "30:355",
+        1
+      ],
+      "length": [
+        "30:378",
+        1
+      ],
+      "batch_size": 1
+    },
+    "class_type": "EmptyLTXVLatentVideo",
+    "_meta": {
+      "title": "Empty LTXV Latent Video"
+    }
+  },
+  "30:348": {
+    "inputs": {
+      "samples": [
+        "30:367",
+        0
+      ],
+      "upscale_model": [
+        "30:371",
+        0
+      ],
+      "vae": [
+        "30:385",
+        0
+      ]
+    },
+    "class_type": "LTXVLatentUpsampler",
+    "_meta": {
+      "title": "LTXVLatentUpsampler"
+    }
+  },
+  "30:349": {
+    "inputs": {
+      "strength": 1,
+      "bypass": [
+        "30:363",
+        0
+      ],
+      "vae": [
+        "30:385",
+        0
+      ],
+      "image": [
+        "30:350",
+        0
+      ],
+      "latent": [
+        "30:348",
+        0
+      ]
+    },
+    "class_type": "LTXVImgToVideoInplace",
+    "_meta": {
+      "title": "LTXVImgToVideoInplace"
+    }
+  },
+  "30:359": {
+    "inputs": {
+      "expression": "a",
+      "values.a": [
+        "30:361",
+        0
+      ]
+    },
+    "class_type": "ComfyMathExpression",
+    "_meta": {
+      "title": "Math Expression (fps)"
+    }
+  },
+  "30:378": {
+    "inputs": {
+      "expression": "a * b + 1",
+      "values.a": [
+        "30:362",
+        0
+      ],
+      "values.b": [
+        "30:361",
+        0
+      ]
+    },
+    "class_type": "ComfyMathExpression",
+    "_meta": {
+      "title": "Math Expression (length)"
+    }
+  },
+  "30:338": {
+    "inputs": {
+      "noise_seed": 42
+    },
+    "class_type": "RandomNoise",
+    "_meta": {
+      "title": "RandomNoise"
+    }
+  },
+  "30:340": {
+    "inputs": {
+      "video_latent": [
+        "30:349",
+        0
+      ],
+      "audio_latent": [
+        "30:367",
+        1
+      ]
+    },
+    "class_type": "LTXVConcatAVLatent",
+    "_meta": {
+      "title": "Concat AV Latent"
+    }
+  },
+  "30:396": {
+    "inputs": {
+      "sigmas": "0.85, 0.7250, 0.4219, 0.0"
+    },
+    "class_type": "ManualSigmas",
+    "_meta": {
+      "title": "ManualSigmas"
+    }
+  },
+  "30:391": {
+    "inputs": {
+      "video_cfg": 1,
+      "audio_cfg": 1,
+      "model": [
+        "30:384",
+        0
+      ],
+      "positive": [
+        "30:365",
+        0
+      ],
+      "negative": [
+        "30:365",
+        1
+      ]
+    },
+    "class_type": "LTXVDualCFGGuider",
+    "_meta": {
+      "title": "LTXV Dual CFG Guider"
+    }
+  },
+  "30:341": {
+    "inputs": {
+      "sampler_name": "euler_ancestral"
+    },
+    "class_type": "KSamplerSelect",
+    "_meta": {
+      "title": "KSamplerSelect"
+    }
+  },
+  "30:368": {
+    "inputs": {
+      "noise": [
+        "30:338",
+        0
+      ],
+      "guider": [
+        "30:391",
+        0
+      ],
+      "sampler": [
+        "30:341",
+        0
+      ],
+      "sigmas": [
+        "30:396",
+        0
+      ],
+      "latent_image": [
+        "30:340",
+        0
+      ]
+    },
+    "class_type": "SamplerCustomAdvanced",
+    "_meta": {
+      "title": "SamplerCustomAdvanced"
+    }
+  },
+  "30:369": {
+    "inputs": {
+      "av_latent": [
+        "30:368",
+        0
+      ]
+    },
+    "class_type": "LTXVSeparateAVLatent",
+    "_meta": {
+      "title": "Separate AV Latent"
+    }
+  },
+  "30:374": {
+    "inputs": {
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 16,
+      "samples": [
+        "30:369",
+        0
+      ],
+      "vae": [
+        "30:385",
+        0
+      ]
+    },
+    "class_type": "VAEDecodeTiled",
+    "_meta": {
+      "title": "VAE Decode (Tiled)"
+    }
+  },
+  "30:358": {
+    "inputs": {
+      "samples": [
+        "30:369",
+        1
+      ],
+      "audio_vae": [
+        "30:386",
+        0
+      ]
+    },
+    "class_type": "LTXVAudioVAEDecode",
+    "_meta": {
+      "title": "LTXV Audio VAE Decode"
+    }
+  },
+  "30:370": {
+    "inputs": {
+      "fps": [
+        "30:359",
+        0
+      ],
+      "bit_depth": 8,
+      "color_space": "sRGB",
+      "codec": "none",
+      "images": [
+        "30:374",
+        0
+      ],
+      "audio": [
+        "30:358",
+        0
+      ]
+    },
+    "class_type": "CreateVideo",
+    "_meta": {
+      "title": "Create Video"
+    }
+  }
+}

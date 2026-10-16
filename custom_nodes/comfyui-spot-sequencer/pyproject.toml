@@ -1,0 +1,9 @@
+[project]
+name = "comfyui-spot-sequencer"
+description = "Chain generated clips and pre-made clips into one MP4: pre-made clips are streamed from file (low RAM), loudness is levelled (BS.1770) and peaks are limited."
+version = "1.0.0"
+license = { text = "MIT" }
+dependencies = []
+
+[tool.comfy]
+DisplayName = "Spot Sequencer"

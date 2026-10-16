@@ -1,0 +1,71 @@
+{
+  "10": {
+    "inputs": {
+      "file": "spot_shot_1.mp4"
+    },
+    "class_type": "LoadVideo",
+    "_meta": {
+      "title": "CLIP 1 (upload a video · sube un video)"
+    }
+  },
+  "11": {
+    "inputs": {
+      "normalize_loudness": false,
+      "target_lufs": -14,
+      "video": [
+        "10",
+        0
+      ]
+    },
+    "class_type": "SpotSequencer_AddPremadeClip",
+    "_meta": {
+      "title": "ADD PRE-MADE CLIP · AÑADIR CLIP PREFIJADO"
+    }
+  },
+  "20": {
+    "inputs": {
+      "file": "spot_shot_2.mp4"
+    },
+    "class_type": "LoadVideo",
+    "_meta": {
+      "title": "CLIP 2 (upload a video · sube un video)"
+    }
+  },
+  "21": {
+    "inputs": {
+      "normalize_loudness": false,
+      "target_lufs": -14,
+      "video": [
+        "20",
+        0
+      ],
+      "sequence": [
+        "11",
+        0
+      ]
+    },
+    "class_type": "SpotSequencer_AddPremadeClip",
+    "_meta": {
+      "title": "ADD PRE-MADE CLIP · AÑADIR CLIP PREFIJADO"
+    }
+  },
+  "90": {
+    "inputs": {
+      "filename_prefix": "Personalized_Spots/_premade/spot",
+      "width": 1920,
+      "height": 1080,
+      "fps": 24,
+      "fit": "crop",
+      "ceiling_db": -2,
+      "crf": 17,
+      "sequence": [
+        "21",
+        0
+      ]
+    },
+    "class_type": "SpotSequencer_SaveSequence",
+    "_meta": {
+      "title": "SAVE SEQUENCE → MP4 · GUARDAR SECUENCIA → MP4"
+    }
+  }
+}

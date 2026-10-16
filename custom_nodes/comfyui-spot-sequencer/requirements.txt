@@ -1,0 +1,6 @@
+# All of these ship with a standard ComfyUI install. Versions below are the ones it was tested with.
+# numpy==2.5.1
+# scipy==1.18.0
+# torch==2.12.1+cu130
+# torchaudio==2.11.0+cu130
+# av==18.0.0

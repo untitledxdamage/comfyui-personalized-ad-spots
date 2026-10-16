@@ -1,0 +1,41 @@
+{
+  "_note": "All models used by the workflow. Paths are relative to ComfyUI/models/. Total ~39.7 GB. The Lightricks/LTX-2.5 repository on Hugging Face is gated: accept its terms there and set HF_TOKEN before downloading.",
+  "models": [
+    {
+      "file": "ltx-2.5-22b-distilled-transformer-comfy-int8-convrot.safetensors",
+      "dir": "diffusion_models",
+      "bytes": 21504034224,
+      "sha256": "c4279eeff115cbeaca494bd2183e7d768c38fe85a184dc6afbb7159157c44334",
+      "url": "https://huggingface.co/Lightricks/LTX-2.5/resolve/main/diffusion_models/ltx-2.5-22b-distilled-transformer-comfy-int8-convrot.safetensors"
+    },
+    {
+      "file": "gemma4-12b-with-proj-ltx-2.5-comfy-int8-convrot.safetensors",
+      "dir": "text_encoders",
+      "bytes": 15372969374,
+      "sha256": "6ce688a0aa98a5fa36a9f1e6c3f42152a498cc2b53ee8c15674c64244f91487f",
+      "url": "https://huggingface.co/Lightricks/LTX-2.5/resolve/main/text_encoders/gemma4-12b-with-proj-ltx-2.5-comfy-int8-convrot.safetensors",
+      "comment": "Hash and size of the file published on 2026-10-01. My local tests used the revision I downloaded on 2026-08-12 (15372971786 bytes, sha256 09a89e084de1a149c3de60cfe9dfd3e5161967eb09eea39e806fcdeffdd568de); the file was updated upstream since."
+    },
+    {
+      "file": "ltx-2.5-video-vae-bf16.safetensors",
+      "dir": "vae",
+      "bytes": 1472223346,
+      "sha256": "847e14ca7f3355debca0cea4eaa24ac0fbcdf0061da054ac89ca638a869ddba3",
+      "url": "https://huggingface.co/Lightricks/LTX-2.5/resolve/main/vae/ltx-2.5-video-vae-bf16.safetensors"
+    },
+    {
+      "file": "ltx-2.5-audio-vae-bf16.safetensors",
+      "dir": "vae",
+      "bytes": 364866540,
+      "sha256": "c52733d37f6a7fb7949c3dc0fb468c6cb2169e4d836983a73babb9f0d54837a5",
+      "url": "https://huggingface.co/Lightricks/LTX-2.5/resolve/main/vae/ltx-2.5-audio-vae-bf16.safetensors"
+    },
+    {
+      "file": "ltx-2.5-latent-spatial-upscaler-x2-bf16-1.0.safetensors",
+      "dir": "latent_upscale_models",
+      "bytes": 995778752,
+      "sha256": "eb5a71fe4068ee87ccdb1c3aa635e547ca76bd2d30ae20ae889f2c325c0677e8",
+      "url": "https://huggingface.co/Lightricks/LTX-2.5/resolve/main/latent_upscale_models/ltx-2.5-latent-spatial-upscaler-x2-bf16-1.0.safetensors"
+    }
+  ]
+}

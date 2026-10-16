@@ -1,0 +1,352 @@
+{
+ "id": "00000000-0000-0000-0000-000000000000",
+ "revision": 0,
+ "last_node_id": 91,
+ "last_link_id": 8,
+ "nodes": [
+  {
+   "id": 10,
+   "type": "LoadVideo",
+   "pos": [
+    0,
+    80
+   ],
+   "size": [
+    520,
+    520
+   ],
+   "flags": {},
+   "order": 0,
+   "mode": 0,
+   "inputs": [],
+   "outputs": [
+    {
+     "name": "VIDEO",
+     "type": "VIDEO",
+     "links": [
+      5
+     ]
+    }
+   ],
+   "title": "CLIP 1 (upload a video · sube un video)",
+   "properties": {
+    "Node name for S&R": "LoadVideo"
+   },
+   "widgets_values": [
+    "spot_shot_1.mp4",
+    "image"
+   ],
+   "widgets_values_named": {
+    "file": "spot_shot_1.mp4",
+    "upload": "image"
+   },
+   "color": "#b06f1e",
+   "bgcolor": "#5e3b10"
+  },
+  {
+   "id": 11,
+   "type": "SpotSequencer_AddPremadeClip",
+   "pos": [
+    0,
+    660
+   ],
+   "size": [
+    520,
+    150
+   ],
+   "flags": {},
+   "order": 3,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "video",
+     "type": "VIDEO",
+     "link": 5
+    },
+    {
+     "name": "sequence",
+     "shape": 7,
+     "type": "SPOT_SEQUENCE",
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "name": "sequence",
+     "type": "SPOT_SEQUENCE",
+     "links": [
+      7
+     ]
+    }
+   ],
+   "title": "ADD PRE-MADE CLIP · AÑADIR CLIP PREFIJADO",
+   "properties": {
+    "Node name for S&R": "SpotSequencer_AddPremadeClip"
+   },
+   "widgets_values": [
+    false,
+    -14
+   ],
+   "widgets_values_named": {
+    "normalize_loudness": false,
+    "target_lufs": -14
+   },
+   "color": "#b06f1e",
+   "bgcolor": "#5e3b10"
+  },
+  {
+   "id": 20,
+   "type": "LoadVideo",
+   "pos": [
+    620,
+    80
+   ],
+   "size": [
+    520,
+    520
+   ],
+   "flags": {},
+   "order": 1,
+   "mode": 0,
+   "inputs": [],
+   "outputs": [
+    {
+     "name": "VIDEO",
+     "type": "VIDEO",
+     "links": [
+      6
+     ]
+    }
+   ],
+   "title": "CLIP 2 (upload a video · sube un video)",
+   "properties": {
+    "Node name for S&R": "LoadVideo"
+   },
+   "widgets_values": [
+    "spot_shot_2.mp4",
+    "image"
+   ],
+   "widgets_values_named": {
+    "file": "spot_shot_2.mp4",
+    "upload": "image"
+   },
+   "color": "#b06f1e",
+   "bgcolor": "#5e3b10"
+  },
+  {
+   "id": 21,
+   "type": "SpotSequencer_AddPremadeClip",
+   "pos": [
+    620,
+    660
+   ],
+   "size": [
+    520,
+    150
+   ],
+   "flags": {},
+   "order": 4,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "video",
+     "type": "VIDEO",
+     "link": 6
+    },
+    {
+     "name": "sequence",
+     "shape": 7,
+     "type": "SPOT_SEQUENCE",
+     "link": 7
+    }
+   ],
+   "outputs": [
+    {
+     "name": "sequence",
+     "type": "SPOT_SEQUENCE",
+     "links": [
+      8
+     ]
+    }
+   ],
+   "title": "ADD PRE-MADE CLIP · AÑADIR CLIP PREFIJADO",
+   "properties": {
+    "Node name for S&R": "SpotSequencer_AddPremadeClip"
+   },
+   "widgets_values": [
+    false,
+    -14
+   ],
+   "widgets_values_named": {
+    "normalize_loudness": false,
+    "target_lufs": -14
+   },
+   "color": "#b06f1e",
+   "bgcolor": "#5e3b10"
+  },
+  {
+   "id": 90,
+   "type": "SpotSequencer_SaveSequence",
+   "pos": [
+    1240,
+    80
+   ],
+   "size": [
+    440,
+    620
+   ],
+   "flags": {},
+   "order": 5,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "sequence",
+     "type": "SPOT_SEQUENCE",
+     "link": 8
+    }
+   ],
+   "outputs": [
+    {
+     "name": "filepath",
+     "type": "STRING",
+     "links": null
+    }
+   ],
+   "title": "SAVE SEQUENCE → MP4 · GUARDAR SECUENCIA → MP4",
+   "properties": {
+    "Node name for S&R": "SpotSequencer_SaveSequence"
+   },
+   "widgets_values": [
+    "Personalized_Spots/_premade/spot",
+    1920,
+    1080,
+    24,
+    "crop",
+    -2,
+    17
+   ],
+   "widgets_values_named": {
+    "filename_prefix": "Personalized_Spots/_premade/spot",
+    "width": 1920,
+    "height": 1080,
+    "fps": 24,
+    "fit": "crop",
+    "ceiling_db": -2,
+    "crf": 17
+   },
+   "color": "#1f6f8b",
+   "bgcolor": "#153f4f"
+  },
+  {
+   "id": 91,
+   "type": "MarkdownNote",
+   "pos": [
+    0,
+    850
+   ],
+   "size": [
+    1140,
+    250
+   ],
+   "flags": {},
+   "order": 2,
+   "mode": 0,
+   "inputs": [],
+   "outputs": [],
+   "title": "How to use · Cómo usar",
+   "properties": {},
+   "widgets_values": [
+    "### Join pre-made clips · Unir clips prefijados\n**EN** — A helper built with the same three nodes: finished clips in, one MP4 out. Upload a clip in each *Load Video*; to add a third clip, duplicate a group and connect `sequence` in and out. Turn on *normalize_loudness* to level a clip (for example −14 LUFS for voice, −24 for ambience). The demo spot in `assets/` was put together with this workflow from two 5 s shots.\n\n**ES** — Un auxiliar hecho con los mismos tres nodos: entran clips terminados, sale un MP4. Sube un clip en cada *Load Video*; para añadir un tercero, duplica un grupo y conecta `sequence` de entrada y de salida. Activa *normalize_loudness* para nivelar un clip (por ejemplo −14 LUFS para voz, −24 para ambiente). El spot de la demo en `assets/` se armó con este workflow a partir de dos tomas de 5 s."
+   ],
+   "widgets_values_named": {
+    "text": "### Join pre-made clips · Unir clips prefijados\n**EN** — A helper built with the same three nodes: finished clips in, one MP4 out. Upload a clip in each *Load Video*; to add a third clip, duplicate a group and connect `sequence` in and out. Turn on *normalize_loudness* to level a clip (for example −14 LUFS for voice, −24 for ambience). The demo spot in `assets/` was put together with this workflow from two 5 s shots.\n\n**ES** — Un auxiliar hecho con los mismos tres nodos: entran clips terminados, sale un MP4. Sube un clip en cada *Load Video*; para añadir un tercero, duplica un grupo y conecta `sequence` de entrada y de salida. Activa *normalize_loudness* para nivelar un clip (por ejemplo −14 LUFS para voz, −24 para ambiente). El spot de la demo en `assets/` se armó con este workflow a partir de dos tomas de 5 s."
+   },
+   "color": "#432",
+   "bgcolor": "#653"
+  }
+ ],
+ "links": [
+  [
+   5,
+   10,
+   0,
+   11,
+   0,
+   "VIDEO"
+  ],
+  [
+   6,
+   20,
+   0,
+   21,
+   0,
+   "VIDEO"
+  ],
+  [
+   7,
+   11,
+   0,
+   21,
+   1,
+   "SPOT_SEQUENCE"
+  ],
+  [
+   8,
+   21,
+   0,
+   90,
+   0,
+   "SPOT_SEQUENCE"
+  ]
+ ],
+ "groups": [
+  {
+   "id": 1,
+   "title": "①  CLIP 1",
+   "bounding": [
+    -40,
+    -30,
+    600,
+    1160
+   ],
+   "color": "#b06f1e",
+   "flags": {}
+  },
+  {
+   "id": 2,
+   "title": "②  CLIP 2",
+   "bounding": [
+    580,
+    -30,
+    600,
+    1160
+   ],
+   "color": "#b06f1e",
+   "flags": {}
+  },
+  {
+   "id": 3,
+   "title": "③  OUTPUT · SALIDA",
+   "bounding": [
+    1200,
+    -30,
+    520,
+    1160
+   ],
+   "color": "#1f6f8b",
+   "flags": {}
+  }
+ ],
+ "config": {},
+ "extra": {
+  "ds": {
+   "scale": 0.5,
+   "offset": [
+    150,
+    120
+   ]
+  },
+  "frontendVersion": "1.52.7"
+ },
+ "version": 0.4
+}
